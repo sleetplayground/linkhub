@@ -1,9 +1,9 @@
-import { NearSocialJS } from '@builddao/near-social-js';
+import { Social } from '@builddao/near-social-js/dist/controllers';
 
 const ACCOUNT_ID = 'sleet.near';
 
 async function main() {
-  const nearSocial = new NearSocialJS({
+  const nearSocial = new Social({
     networkId: 'mainnet',
     nodeUrl: 'https://rpc.mainnet.near.org',
   });
