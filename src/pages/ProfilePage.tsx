@@ -14,6 +14,7 @@ const ProfilePage = () => {
   const [profile, setProfile] = useState<ProfileData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -74,23 +75,62 @@ const ProfilePage = () => {
         )}
         <h1 className="profile-name">{profile.name || 'Anonymous'}</h1>
         {profile.description && (
-          <p className="profile-description">{profile.description}</p>
+          <div>
+            <p className={`profile-description ${isExpanded ? 'expanded' : ''}`}>
+              {profile.description}
+            </p>
+            {profile.description.length > 200 && (
+              <button 
+                className="show-more-btn" 
+                onClick={() => setIsExpanded(!isExpanded)}
+              >
+                {isExpanded ? 'Show Less' : 'Show More'}
+              </button>
+            )}
+          </div>
         )}
       </div>
 
       {profile.linktree && Object.keys(profile.linktree).length > 0 && (
         <div className="social-links">
-          {Object.entries(profile.linktree).map(([platform, url]) => (
-            <a
-              key={platform}
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-            >
-              {platform}
-            </a>
-          ))}
+          {Object.entries(profile.linktree).map(([platform, handle]) => {
+            let emoji = '🔗';
+            let url = '';
+            
+            switch (platform.toLowerCase()) {
+              case 'website':
+                emoji = '🌐';
+                url = handle.startsWith('http') ? handle : `https://${handle}`;
+                break;
+              case 'twitter':
+                emoji = '𝕏';
+                url = `https://twitter.com/${handle.replace('@', '')}`;
+                break;
+              case 'github':
+                emoji = '🐱';
+                url = `https://github.com/${handle.replace('@', '')}`;
+                break;
+              case 'telegram':
+                emoji = '✈️';
+                url = `https://t.me/${handle.replace('@', '')}`;
+                break;
+              default:
+                url = handle.startsWith('http') ? handle : `https://${handle}`;
+            }
+
+            return (
+              <a
+                key={platform}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+              >
+                <span className="social-link-emoji">{emoji}</span>
+                {handle.replace('https://', '').replace('@', '')}
+              </a>
+            );
+          })}
         </div>
       )}
     </div>
