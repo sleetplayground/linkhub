@@ -53,6 +53,10 @@
 .input-container {
   width: 100%;
   max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
 }
 
 .text-input {
@@ -67,11 +71,25 @@
 .footer-section {
   background-color: #95D58D;
   color: #65320b;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-.footer-text {
+.social-links {
+  margin-bottom: 2rem;
+}
+
+.social-links p {
   font-size: 1.2rem;
-  margin-bottom: 1rem;
+  margin: 0.5rem 0;
+  color: #65320b;
+}
+
+.copyright {
+  font-size: 1rem;
+  color: #65320b;
+  opacity: 0.8;
 }
 
 .cta-button {

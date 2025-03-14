@@ -24,12 +24,20 @@ function App() {
             className="text-input"
             placeholder="Enter your link..."
           />
+          <button className="cta-button">Create Your Profile</button>
         </div>
       </section>
 
       <section className="section footer-section">
-        <p className="footer-text">Built on NEAR</p>
-        <button className="cta-button">Create Your Profile</button>
+        <div className="social-links">
+          <p>🔗 https://sleet.near.page/</p>
+          <p>🐱 https://github.com/sleetplayground</p>
+          <p>🦊 https://gitlab.com/sleet-dev</p>
+          <p>𝕏 https://x.com/sleetname</p>
+          <p>〇 https://sleet.near.social</p>
+          <p>✉️ sleetdesign.nft@ud.me</p>
+        </div>
+        <p className="copyright">copyright 2025 by SLEET.NEAR</p>
       </section>
     </>
   )
