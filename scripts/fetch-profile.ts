@@ -78,4 +78,4 @@ async function fetchProfile(accountId: string) {
 }
 
 // Execute for mob.near
-fetchProfile('sleet.near');
+fetchProfile('mob.near');
