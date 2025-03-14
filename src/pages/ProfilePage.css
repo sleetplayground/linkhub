@@ -2,6 +2,11 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
+  background-color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .profile-header {
@@ -18,16 +23,25 @@
 }
 
 .profile-name {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #65320b;
+  font-weight: 600;
 }
 
 .profile-description {
   position: relative;
   max-height: 100px;
   overflow: hidden;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   transition: max-height 0.3s ease-out;
+  background-color: #FFF8A3;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  color: #65320b;
 }
 
 .profile-description.expanded {
@@ -37,11 +51,12 @@
 .show-more-btn {
   background: none;
   border: none;
-  color: #0066cc;
+  color: #8CA2F5;
   cursor: pointer;
-  padding: 0;
+  padding: 0.5rem 1rem;
   font-size: 0.9rem;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
+  font-weight: 500;
 }
 
 .show-more-btn:hover {
@@ -60,16 +75,18 @@
   align-items: center;
   gap: 0.5rem;
   text-decoration: none;
-  color: #333;
+  color: #65320b;
   font-size: 1rem;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 20px;
-  background-color: #f5f5f5;
-  transition: background-color 0.2s;
+  background-color: #95D58D;
+  transition: all 0.2s ease;
+  margin-bottom: 1rem;
 }
 
 .social-link:hover {
-  background-color: #e0e0e0;
+  background-color: #C9A8F4;
+  transform: translateY(-2px);
 }
 
 .social-link-emoji {
