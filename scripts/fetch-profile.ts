@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import pkg from '@builddao/near-social-js';
 const { Social } = pkg;
+import type { IGetOptions } from '@builddao/near-social-js';
 
 interface ProfileData {
   name?: string;
@@ -27,8 +28,12 @@ async function fetchProfile(accountId: string) {
     };
 
     const socialDb = new Social(config);
-    const query = `${accountId}/profile/**`;
-    const response = await socialDb.get(query).catch(error => {
+    const getOptions: IGetOptions = {
+      keys: [`${accountId}/profile/**`],
+      useApiServer: true
+    };
+
+    const response = await socialDb.get(getOptions).catch(error => {
       if (error.message.includes('Missing keys')) {
         return null;
       }
@@ -40,7 +45,12 @@ async function fetchProfile(accountId: string) {
       process.exit(0);
     }
 
-    const profile = response as ProfileData;
+    const profile = response[accountId]?.profile as ProfileData;
+    if (!profile) {
+      console.log(`No profile data found for ${accountId}`);
+      process.exit(0);
+    }
+
     console.log('=== Profile Details ===\n');
     console.log(`Account: ${accountId}`);
     console.log(`Name: ${profile.name || 'Not specified'}`);
@@ -67,5 +77,5 @@ async function fetchProfile(accountId: string) {
   }
 }
 
-// Execute for sleet.near
-fetchProfile('mob.near');
+// Execute for mob.near
+fetchProfile('sleet.near');
