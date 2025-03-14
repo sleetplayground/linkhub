@@ -1,33 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <section className="section hero-section">
+        <div className="hero-text">
+          EVERYTHING<br/>
+          YOU ARE.<br/>
+          IN ONE,<br/>
+          SIMPLE LINK
+        </div>
+        <div className="hero-subtext">
+          the linktree alternative<br/>
+          for the next billion people<br/>
+          linkhub.near/yourname.near
+        </div>
+      </section>
+
+      <section className="section input-section">
+        <div className="input-container">
+          <input
+            type="text"
+            className="text-input"
+            placeholder="Enter your link..."
+          />
+        </div>
+      </section>
+
+      <section className="section footer-section">
+        <p className="footer-text">Built on NEAR</p>
+        <button className="cta-button">Create Your Profile</button>
+      </section>
     </>
   )
 }

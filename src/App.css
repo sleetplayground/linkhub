@@ -1,42 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 2rem;
+  box-sizing: border-box;
+}
+
+.hero-section {
+  background-color: #FFF8A3;
+  color: #65320b;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.hero-text {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  max-width: 800px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.hero-subtext {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #1ca538;
+  margin-bottom: 1rem;
+}
+
+.input-section {
+  background-color: #fff;
+}
+
+.input-container {
+  width: 100%;
+  max-width: 600px;
+}
+
+.text-input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.2rem;
+  border: 2px solid #C9A8F4;
+  border-radius: 8px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.footer-section {
+  background-color: #95D58D;
+  color: #65320b;
+}
+
+.footer-text {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.cta-button {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background-color: #8CA2F5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Ubuntu', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #FF8A8A;
+}
+
+@media (max-width: 768px) {
+  .hero-text {
+    font-size: 2.5rem;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .hero-subtext {
+    font-size: 1.2rem;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
