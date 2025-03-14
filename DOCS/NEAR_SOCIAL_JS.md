@@ -2,7 +2,7 @@
 
 ## Fetching Profile Data
 
-The `@builddao/near-social-js` library provides a `SocialDBContract` class for interacting with NEAR Social's SocialDB.
+The `@builddao/near-social-js` library provides a `Social` class for interacting with NEAR Social's SocialDB.
 
 ### Basic Usage
 
@@ -10,7 +10,7 @@ The `@builddao/near-social-js` library provides a `SocialDBContract` class for i
 import { SocialDBContract } from '@builddao/near-social-js';
 
 // Initialize contract
-const socialDb = new SocialDBContract();
+const socialDb = new Social();
 
 // Fetch profile data
 async function getProfile(accountId: string) {

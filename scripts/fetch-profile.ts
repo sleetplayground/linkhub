@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-import { SocialDBContract } from '@builddao/near-social-js';
+import { Social } from '@builddao/near-social-js';
 
 async function fetchProfile(accountId: string) {
   try {
-    const socialDb = new SocialDBContract();
+    const socialDb = new Social();
     const profile = await socialDb.get(`${accountId}/profile`);
     
     console.log(`Profile data for ${accountId}:`);
