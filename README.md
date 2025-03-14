@@ -12,4 +12,17 @@ Create your profile on Near Social
 ---
 
 
+
+🔗 https://sleet.near.page/
+<br/>
+🐱 https://github.com/sleetplayground
+<br/>
+🦊 https://gitlab.com/sleet-dev
+<br/>
+𝕏 https://x.com/sleetname
+<br/>
+〇 https://sleet.near.social
+<br/>
+✉️ sleetdesign.nft@ud.me
+<br/>
 copyright 2025 by SLEET.NEAR
