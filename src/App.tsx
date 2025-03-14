@@ -32,19 +32,21 @@ function HomePage() {
 
       <section className="section input-section">
         <form className="input-container" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            className="text-input"
-            placeholder="Enter your NEAR account..."
-            value={accountId}
-            onChange={(e) => setAccountId(e.target.value)}
-          />
-          <button type="submit" className="cta-button">View Profile</button>
+          <div className="input-row">
+            <input
+              type="text"
+              className="text-input"
+              placeholder="Enter your NEAR account..."
+              value={accountId}
+              onChange={(e) => setAccountId(e.target.value)}
+            />
+            <button type="submit" className="cta-button">View Profile</button>
+          </div>
+          <a href="https://near.social/" target="_blank" rel="noopener noreferrer" className="create-profile-link">Create your profile</a>
         </form>
       </section>
 
       <section className="section footer-section">
-        <a href="https://near.social/" target="_blank" rel="noopener noreferrer" className="create-profile-link">Create your profile</a>
         <div className="social-links">
           <p><a href="https://sleet.near.page/" target="_blank" rel="noopener noreferrer">🔗 sleet.near.page</a></p>
           <p><a href="https://github.com/sleetplayground" target="_blank" rel="noopener noreferrer">🐱 github.com/sleetplayground</a></p>

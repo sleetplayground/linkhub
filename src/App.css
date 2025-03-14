@@ -58,12 +58,19 @@
   max-width: 600px;
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.input-row {
+  width: 100%;
+  display: flex;
   gap: 1rem;
   align-items: center;
 }
 
 .text-input {
-  width: 100%;
+  flex: 1;
   padding: 1rem;
   font-size: 1.2rem;
   border: 2px solid #C9A8F4;
@@ -135,9 +142,6 @@
 }
 
 .create-profile-link {
-  position: absolute;
-  bottom: 2rem;
-  left: 2rem;
   color: #65320b;
   text-decoration: none;
   font-size: 1rem;
