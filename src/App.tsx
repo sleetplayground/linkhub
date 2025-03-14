@@ -30,12 +30,12 @@ function App() {
 
       <section className="section footer-section">
         <div className="social-links">
-          <p>🔗 https://sleet.near.page/</p>
-          <p>🐱 https://github.com/sleetplayground</p>
-          <p>🦊 https://gitlab.com/sleet-dev</p>
-          <p>𝕏 https://x.com/sleetname</p>
-          <p>〇 https://sleet.near.social</p>
-          <p>✉️ sleetdesign.nft@ud.me</p>
+          <p><a href="https://sleet.near.page/" target="_blank" rel="noopener noreferrer">🔗 sleet.near.page</a></p>
+          <p><a href="https://github.com/sleetplayground" target="_blank" rel="noopener noreferrer">🐱 github.com/sleetplayground</a></p>
+          <p><a href="https://gitlab.com/sleet-dev" target="_blank" rel="noopener noreferrer">🦊 gitlab.com/sleet-dev</a></p>
+          <p><a href="https://x.com/sleetname" target="_blank" rel="noopener noreferrer">𝕏 x.com/sleetname</a></p>
+          <p><a href="https://sleet.near.social" target="_blank" rel="noopener noreferrer">〇 sleet.near.social</a></p>
+          <p><a href="mailto:sleetdesign.nft@ud.me">✉️ sleetdesign.nft@ud.me</a></p>
         </div>
         <p className="copyright">copyright 2025 by SLEET.NEAR</p>
       </section>
