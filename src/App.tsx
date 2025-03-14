@@ -44,6 +44,7 @@ function HomePage() {
       </section>
 
       <section className="section footer-section">
+        <a href="https://near.social/" target="_blank" rel="noopener noreferrer" className="create-profile-link">Create your profile</a>
         <div className="social-links">
           <p><a href="https://sleet.near.page/" target="_blank" rel="noopener noreferrer">🔗 sleet.near.page</a></p>
           <p><a href="https://github.com/sleetplayground" target="_blank" rel="noopener noreferrer">🐱 github.com/sleetplayground</a></p>
