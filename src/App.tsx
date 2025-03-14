@@ -1,6 +1,19 @@
 import './App.css'
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import ProfilePage from './pages/ProfilePage'
 
-function App() {
+function HomePage() {
+  const navigate = useNavigate();
+  const [accountId, setAccountId] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (accountId.trim()) {
+      navigate(`/${accountId.toLowerCase()}`);
+    }
+  };
+
   return (
     <>
       <section className="section hero-section">
@@ -18,14 +31,16 @@ function App() {
       </section>
 
       <section className="section input-section">
-        <div className="input-container">
+        <form className="input-container" onSubmit={handleSubmit}>
           <input
             type="text"
             className="text-input"
-            placeholder="Enter your link..."
+            placeholder="Enter your NEAR account..."
+            value={accountId}
+            onChange={(e) => setAccountId(e.target.value)}
           />
-          <button className="cta-button">Create Your Profile</button>
-        </div>
+          <button type="submit" className="cta-button">View Profile</button>
+        </form>
       </section>
 
       <section className="section footer-section">
@@ -40,6 +55,17 @@ function App() {
         <p className="copyright">copyright 2025 by SLEET.NEAR</p>
       </section>
     </>
+  )
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/:accountId" element={<ProfilePage />} />
+      </Routes>
+    </Router>
   )
 }
 
