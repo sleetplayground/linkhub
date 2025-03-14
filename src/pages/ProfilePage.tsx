@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Social } from '@builddao/near-social-js';
+import './profilepage.css';
 
 interface ProfileData {
   name?: string;
