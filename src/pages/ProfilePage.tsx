@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import pkg from '@builddao/near-social-js';
-const { Social } = pkg;
+import { Social } from '@builddao/near-social-js';
 
 interface ProfileData {
   name?: string;

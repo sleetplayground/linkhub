@@ -6,12 +6,14 @@ export default defineConfig({
   plugins: [react()],
   define: {
     'process.env': process.env,
-    global: {}
+    global: 'globalThis'
   },
   resolve: {
     alias: {
       buffer: 'buffer',
-      process: 'process/browser'
+      process: 'process/browser',
+      stream: 'stream-browserify',
+      util: 'util'
     }
   },
   optimizeDeps: {
@@ -19,6 +21,7 @@ export default defineConfig({
       define: {
         global: 'globalThis'
       }
-    }
+    },
+    include: ['buffer', 'process/browser']
   }
 })
