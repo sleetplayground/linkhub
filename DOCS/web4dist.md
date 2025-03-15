@@ -22,6 +22,14 @@ deploy
 ```sh
 npx web4-deploy dist linkhub.testnet --nearfs
 npx web4-deploy dist linkhub.near --nearfs
+
+npx nearfs-upload dist \
+  --network testnet \
+  --account-id linkhub.testnet
+
+npx nearfs-upload dist \
+  --network mainnet \
+  --account-id linkhub.near
 ```
 - can be run with or without --nearfs
 
