@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Social } from '@builddao/near-social-js';
+import ReactMarkdown from 'react-markdown';
 import './profilepage.css';
 
 interface ProfileData {
@@ -77,9 +78,9 @@ const ProfilePage = () => {
         <h1 className="profile-name">{profile.name || 'Anonymous'}</h1>
         {profile.description && (
           <div>
-            <p className={`profile-description ${isExpanded ? 'expanded' : ''}`}>
-              {profile.description}
-            </p>
+            <div className={`profile-description ${isExpanded ? 'expanded' : ''}`}>
+              <ReactMarkdown>{profile.description}</ReactMarkdown>
+            </div>
             {profile.description.length > 200 && (
               <button 
                 className="show-more-btn" 
