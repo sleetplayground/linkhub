@@ -98,46 +98,48 @@ const ProfilePage = () => {
 
       {profile.linktree && Object.keys(profile.linktree).length > 0 && (
         <div className="social-links">
-          {Object.entries(profile.linktree).map(([platform, handle]) => {
-            let emoji = '🔗';
-            let url = '';
-            
-            switch (platform.toLowerCase()) {
-              case 'website':
-                emoji = '🌐';
-                url = handle.startsWith('http') ? handle : `https://${handle}`;
-                break;
-              case 'twitter':
-                emoji = '𝕏';
-                url = `https://twitter.com/${handle.replace('@', '')}`;
-                break;
-              case 'github':
-                emoji = '🐱';
-                url = `https://github.com/${handle.replace('@', '')}`;
-                break;
-              case 'telegram':
-                emoji = '✈️';
-                url = `https://t.me/${handle.replace('@', '')}`;
-                break;
-              default:
-                url = handle.startsWith('http') ? handle : `https://${handle}`;
-            }
+          {Object.entries(profile.linktree)
+            .filter(([_, handle]) => handle.trim() !== '')
+            .map(([platform, handle]) => {
+              let emoji = '🔗';
+              let url = '';
+              
+              switch (platform.toLowerCase()) {
+                case 'website':
+                  emoji = '🌐';
+                  url = handle.startsWith('http') ? handle : `https://${handle}`;
+                  break;
+                case 'twitter':
+                  emoji = '𝕏';
+                  url = `https://twitter.com/${handle.replace('@', '')}`;
+                  break;
+                case 'github':
+                  emoji = '🐱';
+                  url = `https://github.com/${handle.replace('@', '')}`;
+                  break;
+                case 'telegram':
+                  emoji = '✈️';
+                  url = `https://t.me/${handle.replace('@', '')}`;
+                  break;
+                default:
+                  url = handle.startsWith('http') ? handle : `https://${handle}`;
+              }
 
-            return (
-              <a
-                key={platform}
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-link"
-              >
-                <div className="social-link-content">
-                  <span className="social-link-emoji">{emoji}</span>
-                  <span className="social-link-text">{handle.replace('https://', '').replace('@', '')}</span>
-                </div>
-              </a>
-            );
-          })}
+              return (
+                <a
+                  key={platform}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-link"
+                >
+                  <div className="social-link-content">
+                    <span className="social-link-emoji">{emoji}</span>
+                    <span className="social-link-text">{handle.replace('https://', '').replace('@', '')}</span>
+                  </div>
+                </a>
+              );
+            })}
         </div>
       )}
     </div>

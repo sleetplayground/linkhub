@@ -76,6 +76,18 @@
   text-decoration: underline;
 }
 
+.near-handle {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.near-handle:hover {
+  color: #004999;
+  text-decoration: underline;
+}
+
 .social-links {
   display: flex;
   flex-direction: column;
