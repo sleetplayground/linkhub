@@ -101,7 +101,11 @@ const ProfilePage = () => {
       {profile.linktree && Object.keys(profile.linktree).length > 0 && (
         <div className="social-links">
           {Object.entries(profile.linktree)
-            .filter(([platform]) => platform.trim() !== '')
+            .filter(([platform, handle]) => {
+              if (platform.trim() === '') return false;
+              if (platform.toLowerCase() === 'website' && !handle.trim()) return false;
+              return true;
+            })
             .map(([platform, handle]) => {
               let emoji = '🔗';
               let url = '';
