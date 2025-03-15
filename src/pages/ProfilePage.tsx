@@ -82,7 +82,9 @@ const ProfilePage = () => {
         {profile.description && (
           <div>
             <div className={`profile-description ${isExpanded ? 'expanded' : ''}`}>
-              <ReactMarkdown>{profile.description}</ReactMarkdown>
+              <ReactMarkdown>
+                {profile.description}
+              </ReactMarkdown>
             </div>
             {profile.description.length > 200 && (
               <button 
