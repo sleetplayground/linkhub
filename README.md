@@ -9,6 +9,9 @@ Built on Near
 Create your profile on Near Social
 
 
+> This project currently just gets near social profile information, there is no way to edit that info here
+
+
 ---
 
 
