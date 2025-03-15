@@ -144,6 +144,18 @@ const ProfilePage = () => {
             })}
         </div>
       )}
+
+      <a
+        href={`https://${accountId}.social`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="near-social-link"
+      >
+        <div className="social-link-content">
+          <span className="social-link-emoji">Ｏ</span>
+          <span className="social-link-text">Join on NEAR Social</span>
+        </div>
+      </a>
     </div>
   );
 };

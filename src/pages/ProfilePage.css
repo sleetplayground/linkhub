@@ -130,3 +130,23 @@
 .social-link-text {
   flex-grow: 1;
 }
+
+.near-social-link {
+  display: block;
+  text-decoration: none;
+  color: #65320b;
+  font-size: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 20px;
+  background-color: #FFF8A3;
+  transition: all 0.2s ease;
+  width: calc(100% - 2rem);
+  max-width: 600px;
+  margin-top: 2rem;
+  box-sizing: border-box;
+}
+
+.near-social-link:hover {
+  background-color: #FFE066;
+  transform: translateY(-2px);
+}
