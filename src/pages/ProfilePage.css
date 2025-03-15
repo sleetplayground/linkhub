@@ -47,6 +47,14 @@
   color: #65320b;
   line-height: 1.6;
   box-sizing: border-box;
+  text-align: left;
+}
+
+.profile-description img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem 0;
 }
 
 .profile-description.expanded {
