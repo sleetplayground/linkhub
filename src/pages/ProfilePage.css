@@ -79,9 +79,7 @@
 }
 
 .social-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: block;
   text-decoration: none;
   color: #65320b;
   font-size: 1rem;
@@ -93,6 +91,12 @@
   box-sizing: border-box;
 }
 
+.social-link-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .social-link:hover {
   background-color: #C9A8F4;
   transform: translateY(-2px);
@@ -100,4 +104,9 @@
 
 .social-link-emoji {
   font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.social-link-text {
+  flex-grow: 1;
 }

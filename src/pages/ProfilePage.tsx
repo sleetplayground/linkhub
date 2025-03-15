@@ -127,8 +127,10 @@ const ProfilePage = () => {
                 rel="noopener noreferrer"
                 className="social-link"
               >
-                <span className="social-link-emoji">{emoji}</span>
-                {handle.replace('https://', '').replace('@', '')}
+                <div className="social-link-content">
+                  <span className="social-link-emoji">{emoji}</span>
+                  <span className="social-link-text">{handle.replace('https://', '').replace('@', '')}</span>
+                </div>
               </a>
             );
           })}
