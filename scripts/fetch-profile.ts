@@ -56,7 +56,12 @@ async function fetchProfile(accountId: string) {
     console.log(`Name: ${profile.name || 'Not specified'}`);
     
     if (profile.image?.url) {
-      console.log(`Image URL: ${profile.image.url}`);
+      const imageUrl = profile.image.url.startsWith('http') ? profile.image.url : `https://ipfs.near.social/ipfs/${profile.image.url}`;
+      console.log('\nProfile Image:')
+      console.log(`  URL: ${imageUrl}`);
+      console.log(`  IPFS Hash: ${profile.image.url}`);
+    } else {
+      console.log('\nProfile Image: Not set');
     }
     
     if (profile.description) {
@@ -78,4 +83,4 @@ async function fetchProfile(accountId: string) {
 }
 
 // Execute for mob.near
-fetchProfile('mob.near');
+fetchProfile('sleet.near');
