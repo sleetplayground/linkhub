@@ -34,7 +34,7 @@ const ProfilePage = () => {
         const response = await socialDb.get({
           keys: [`${accountId}/profile/**`],
           useApiServer: true
-        });
+        }) as Record<string, { profile: ProfileData }>;
 
         if (!response || !response[accountId]?.profile) {
           setError('Profile not found');
@@ -101,7 +101,7 @@ const ProfilePage = () => {
       {profile.linktree && Object.keys(profile.linktree).length > 0 && (
         <div className="social-links">
           {Object.entries(profile.linktree)
-            .filter(([_, handle]) => handle.trim() !== '')
+            .filter(([platform]) => platform.trim() !== '')
             .map(([platform, handle]) => {
               let emoji = '🔗';
               let url = '';
