@@ -77,13 +77,13 @@ w3 account info
 Manage spaces:
 ```sh
 # Create a new space
-w3 space create <name>
+w3 space create linkhub
 
 # List all spaces
 w3 space ls
 
 # Switch to a different space
-w3 space use <name>
+w3 space use linkhub
 
 # Delete a space
 w3 space delete <name>
@@ -91,29 +91,13 @@ w3 space delete <name>
 
 Upload files and directories:
 ```sh
-# Upload a single file
-w3 put /path/to/file.txt
-
-# Upload a directory
-w3 put /path/to/directory
-
-# Upload with custom name
-w3 put --name "my-backup" /path/to/files
-
-# Upload with specific CID version (v0 or v1)
-w3 put --cid-version 1 /path/to/files
+w3 up dist
 ```
 
 List uploads:
 ```sh
 # List all uploads
 w3 ls
-
-# List recent uploads
-w3 ls --recent
-
-# List uploads with specific name
-w3 ls --name "my-backup"
 ```
 
 Manage storage:
@@ -129,3 +113,16 @@ w3 pin rm <CID>
 ```
 
 
+---
+
+method web4_setStaticUrl
+
+```sh
+
+# For testnet
+near call linkhub.testnet web4_setStaticUrl '{"url": "ipfs://CID_HERE"}' --accountId linkhub.testnet
+
+# For mainnet
+near call linkhub.near web4_setStaticUrl '{"url": "ipfs://CID_HERE"}' --accountId linkhub.near
+
+```
