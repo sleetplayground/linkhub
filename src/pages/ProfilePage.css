@@ -1,12 +1,13 @@
 .profile-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 3rem 2rem;
+  max-width: 100%;
+  margin: 0;
+  padding: 3rem 1rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #ffffff;
+  box-sizing: border-box;
 }
 
 .profile-header {
@@ -38,13 +39,14 @@
   margin-bottom: 3rem;
   transition: max-height 0.3s ease-out;
   background-color: #FFF8A3;
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  width: 100%;
+  width: calc(100% - 2rem);
   max-width: 600px;
   color: #65320b;
   line-height: 1.6;
+  box-sizing: border-box;
 }
 
 .profile-description.expanded {
@@ -68,26 +70,27 @@
 
 .social-links {
   display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
   margin-bottom: 3rem;
-  width: 100%;
+  width: calc(100% - 2rem);
   max-width: 600px;
 }
 
 .social-link {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: space-between;
   text-decoration: none;
   color: #65320b;
   font-size: 1rem;
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 1.5rem;
   border-radius: 20px;
   background-color: #95D58D;
   transition: all 0.2s ease;
-  margin-bottom: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .social-link:hover {
