@@ -6,7 +6,7 @@ import type { IGetOptions } from '@builddao/near-social-js';
 interface ProfileData {
   name?: string;
   description?: string;
-  image?: { url: string };
+  image?: { url?: string; ipfs_cid?: string };
   linktree?: Record<string, string>;
 }
 
@@ -45,6 +45,8 @@ async function fetchProfile(accountId: string) {
       process.exit(0);
     }
 
+    console.log('Raw response:', JSON.stringify(response, null, 2));
+
     const profile = response[accountId]?.profile as ProfileData;
     if (!profile) {
       console.log(`No profile data found for ${accountId}`);
@@ -55,8 +57,10 @@ async function fetchProfile(accountId: string) {
     console.log(`Account: ${accountId}`);
     console.log(`Name: ${profile.name || 'Not specified'}`);
     
-    if (profile.image?.url) {
-      const imageUrl = profile.image.url.startsWith('http') ? profile.image.url : `https://ipfs.near.social/ipfs/${profile.image.url}`;
+    if (profile.image?.url || profile.image?.ipfs_cid) {
+      const imageUrl = profile.image.url ? 
+        (profile.image.url.startsWith('http') ? profile.image.url : `https://ipfs.near.social/ipfs/${profile.image.url}`) :
+        `https://ipfs.near.social/ipfs/${profile.image.ipfs_cid}`;
       console.log('\nProfile Image:')
       console.log(`  ${imageUrl}`);
     } else {

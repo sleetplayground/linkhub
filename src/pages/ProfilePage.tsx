@@ -7,7 +7,7 @@ import './profilepage.css';
 interface ProfileData {
   name?: string;
   description?: string;
-  image?: { url: string };
+  image?: { url?: string; ipfs_cid?: string };
   linktree?: Record<string, string>;
 }
 
@@ -68,9 +68,12 @@ const ProfilePage = () => {
   return (
     <div className="profile-container">
       <div className="profile-header">
-        {profile.image?.url && (
+        {(profile.image?.url || profile.image?.ipfs_cid) && (
           <img 
-            src={profile.image.url} 
+            src={profile.image.url ? 
+              (profile.image.url.startsWith('http') ? profile.image.url : `https://ipfs.near.social/ipfs/${profile.image.url}`) :
+              `https://ipfs.near.social/ipfs/${profile.image.ipfs_cid}`
+            } 
             alt={profile.name || 'Profile'} 
             className="profile-image"
           />
