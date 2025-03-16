@@ -11,6 +11,12 @@ interface ProfileData {
   linktree?: Record<string, string>;
 }
 
+interface ApiResponse {
+  [key: string]: {
+    profile?: ProfileData;
+  };
+}
+
 const ProfilePage = () => {
   const { accountId } = useParams<{ accountId: string }>();
   const [profile, setProfile] = useState<ProfileData | null>(null);
@@ -57,8 +63,8 @@ const ProfilePage = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const data = await response.json();
-        if (!data || !data[accountId]?.profile) {
+        const data = await response.json() as ApiResponse;
+        if (!accountId || !data || !data[accountId]?.profile) {
           setError('Profile not found');
           return;
         }
