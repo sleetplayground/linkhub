@@ -104,7 +104,7 @@ const ProfilePage = () => {
           {Object.entries(profile.linktree)
             .filter(([platform, handle]) => {
               if (platform.trim() === '') return false;
-              if (platform.toLowerCase() === 'website' && !handle.trim()) return false;
+              if (!handle || handle.trim() === '') return false;
               return true;
             })
             .map(([platform, handle]) => {
