@@ -89,7 +89,12 @@ const ProfilePage = () => {
   }, [accountId]);
 
   if (loading) {
-    return <div className="loading">Loading profile...</div>;
+    return (
+      <div className="loading">
+        <img src="/linkhub_icon.svg" alt="Loading..." className="loading-icon" />
+        <div className="loading-text">Loading profile...</div>
+      </div>
+    );
   }
 
   if (error) {
