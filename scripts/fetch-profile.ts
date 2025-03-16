@@ -86,4 +86,4 @@ async function fetchProfile(accountId: string) {
 }
 
 // Execute for mob.near
-fetchProfile('nonresistant.near');
+fetchProfile('sleet.near');

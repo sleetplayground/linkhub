@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Social } from '@builddao/near-social-js';
 import ReactMarkdown from 'react-markdown';
-import './profilepage.css';
+import './ProfilePage.css';
 
 interface ProfileData {
   name?: string;
