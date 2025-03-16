@@ -1,53 +1,39 @@
 #!/usr/bin/env node
-import pkg from '@builddao/near-social-js';
-const { Social } = pkg;
-import type { IGetOptions } from '@builddao/near-social-js';
 
 interface ProfileData {
   name?: string;
   description?: string;
   image?: { url?: string; ipfs_cid?: string };
+  backgroundImage?: { url?: string; ipfs_cid?: string };
   linktree?: Record<string, string>;
-}
-
-interface NearSocialConfig {
-  network: string;
-  contractName: string;
-  nodeUrl: string;
-  apiUrl: string;
+  tags?: Record<string, string>;
 }
 
 async function fetchProfile(accountId: string) {
   try {
-    // Initialize the API with proper configuration
-    const config: NearSocialConfig = {
-      network: 'mainnet',
-      contractName: 'social.near',
-      nodeUrl: 'https://rpc.mainnet.near.org',
-      apiUrl: 'https://api.near.social'
-    };
-
-    const socialDb = new Social(config);
-    const getOptions: IGetOptions = {
-      keys: [`${accountId}/profile/**`],
-      useApiServer: true
-    };
-
-    const response = await socialDb.get(getOptions).catch(error => {
-      if (error.message.includes('Missing keys')) {
-        return null;
-      }
-      throw error;
+    const response = await fetch('https://rpc.web4.near.page/account/social.near/view/get', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        keys: [`${accountId}/profile/**`]
+      })
     });
 
-    if (!response) {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    if (!data || !data[accountId]) {
       console.log(`No profile found for ${accountId}`);
       process.exit(0);
     }
 
-    console.log('Raw response:', JSON.stringify(response, null, 2));
+    console.log('Raw response:', JSON.stringify(data, null, 2));
 
-    const profile = response[accountId]?.profile as ProfileData;
+    const profile = data[accountId]?.profile as ProfileData;
     if (!profile) {
       console.log(`No profile data found for ${accountId}`);
       process.exit(0);
@@ -66,15 +52,30 @@ async function fetchProfile(accountId: string) {
     } else {
       console.log('\nProfile Image: Not set');
     }
+
+    if (profile.backgroundImage?.url || profile.backgroundImage?.ipfs_cid) {
+      const bgImageUrl = profile.backgroundImage.url ? 
+        (profile.backgroundImage.url.startsWith('http') ? profile.backgroundImage.url : `https://ipfs.near.social/ipfs/${profile.backgroundImage.url}`) :
+        `https://ipfs.near.social/ipfs/${profile.backgroundImage.ipfs_cid}`;
+      console.log('\nBackground Image:')
+      console.log(`  ${bgImageUrl}`);
+    }
     
     if (profile.description) {
-      console.log(`Description: ${profile.description}`);
+      console.log('\nDescription:', profile.description);
     }
     
     if (profile.linktree && Object.keys(profile.linktree).length > 0) {
       console.log('\nSocial Links:');
       Object.entries(profile.linktree).forEach(([platform, value]) => {
         console.log(`  - ${platform}: ${value}`);
+      });
+    }
+
+    if (profile.tags && Object.keys(profile.tags).length > 0) {
+      console.log('\nTags:');
+      Object.keys(profile.tags).forEach(tag => {
+        console.log(`  - ${tag}`);
       });
     }
     
@@ -85,5 +86,5 @@ async function fetchProfile(accountId: string) {
   }
 }
 
-// Execute for mob.near
+// Execute for sleet.near
 fetchProfile('sleet.near');
