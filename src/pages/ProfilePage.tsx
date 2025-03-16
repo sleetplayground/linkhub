@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Social } from '@builddao/near-social-js';
 import ReactMarkdown from 'react-markdown';
 import './ProfilePage.css';
 
@@ -23,25 +22,27 @@ const ProfilePage = () => {
       if (!accountId) return;
 
       try {
-        const config = {
-          network: 'mainnet',
-          contractName: 'social.near',
-          nodeUrl: 'https://rpc.mainnet.near.org',
-          apiUrl: 'https://api.near.social'
-        };
+        const response = await fetch('https://rpc.web4.near.page/account/social.near/view/get', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            keys: [`${accountId}/profile/**`]
+          })
+        });
 
-        const socialDb = new Social(config);
-        const response = await socialDb.get({
-          keys: [`${accountId}/profile/**`],
-          useApiServer: true
-        }) as Record<string, { profile: ProfileData }>;
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
-        if (!response || !response[accountId]?.profile) {
+        const data = await response.json();
+        if (!data || !data[accountId]?.profile) {
           setError('Profile not found');
           return;
         }
 
-        setProfile(response[accountId].profile);
+        setProfile(data[accountId].profile);
       } catch (err) {
         setError('Failed to fetch profile');
         console.error(err);
