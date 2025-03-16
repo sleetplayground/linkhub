@@ -19,9 +19,29 @@ const ProfilePage = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
+    const CACHE_EXPIRY = 5 * 60 * 1000; // 5 minutes in milliseconds
+
     const fetchProfile = async () => {
       if (!accountId) return;
 
+      // Check cache first
+      const cachedData = localStorage.getItem(`profile-${accountId}`);
+      if (cachedData) {
+        const { profile: cachedProfile, timestamp } = JSON.parse(cachedData);
+        if (Date.now() - timestamp < CACHE_EXPIRY) {
+          setProfile(cachedProfile);
+          setLoading(false);
+          // Fetch fresh data in background
+          fetchFreshData();
+          return;
+        }
+      }
+
+      // If no cache or expired, fetch fresh data
+      await fetchFreshData();
+    };
+
+    const fetchFreshData = async () => {
       try {
         const response = await fetch('https://rpc.web4.near.page/account/social.near/view/get', {
           method: 'POST',
@@ -43,7 +63,14 @@ const ProfilePage = () => {
           return;
         }
 
-        setProfile(data[accountId].profile);
+        const profileData = data[accountId].profile;
+        // Update cache
+        localStorage.setItem(`profile-${accountId}`, JSON.stringify({
+          profile: profileData,
+          timestamp: Date.now()
+        }));
+
+        setProfile(profileData);
       } catch (err) {
         setError('Failed to fetch profile');
         console.error(err);
