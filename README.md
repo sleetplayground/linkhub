@@ -16,6 +16,29 @@ Create your profile on Near Social
 
 
 
+### Dev and Build
+
+```sh
+bun install
+bun run dev
+bun run build
+bun run lint
+
+# web4 deploy
+NEAR_SIGNER_KEY=ed25519:your_key_here
+bun run web4_testnet
+bun run web4_mainnet
+
+# web3storgae https://console.storacha.network/
+w3 space use TEMP
+w3 up src
+```
+
+
+---
+
+
+
 🔗 https://sleet.near.page/
 <br/>
 🐱 https://github.com/sleetplayground

@@ -1,5 +1,5 @@
 {
-  "name": "LINKHUB",
+  "name": "linkhub",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "web4_testnet": "web4-deploy src linkhub.testnet --nearfs --yes",
+    "web4_mainnet": "web4-deploy src linkhub.near --nearfs"
   },
   "dependencies": {
     "@builddao/near-social-js": "^1.1.0",
